@@ -46,7 +46,10 @@ export const Form = () => {
           duration: 5000,
           isClosable: true,
         });
+        const story = res.data.result;
         console.log(res.data.result);
+        axios.post("https://hb-server.herokuapp.com/story/")
+
         setButtonLoading(false);
       })
       .catch((err: any) => {
