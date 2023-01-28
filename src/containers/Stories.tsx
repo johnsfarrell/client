@@ -1,12 +1,9 @@
 import {
-  Button,
-  Link,
-  Stack,
+  Heading,
   Table,
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
   Th,
   Thead,
   Tr,
@@ -18,8 +15,16 @@ export const Stories = () => {
   };
 
   return (
-    <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
+    <>
       <TableContainer>
+        <Heading
+          size="sm"
+          textAlign={"center"}
+          mb={"4"}
+          fontFamily={"Bakbak One"}
+        >
+          POPULAR
+        </Heading>
         <Table size="sm">
           <Thead>
             <Tr>
@@ -31,24 +36,45 @@ export const Stories = () => {
           <Tbody>
             <Tr
               onClick={handleRowClick}
-              _hover={{ backgroundColor: "#f0f0f0f0" }}
+              _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
             >
               <Td>yards</Td>
               <Td>Jan 28th, 9:38pm</Td>
               <Td isNumeric>1,234</Td>
             </Tr>
           </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th></Th>
-              <Th>
-                <Button>More Stories</Button>
-              </Th>
-              <Th></Th>
-            </Tr>
-          </Tfoot>
         </Table>
       </TableContainer>
-    </Stack>
+      <TableContainer>
+        <Heading
+          size="sm"
+          textAlign={"center"}
+          mb={"4"}
+          mt={"10"}
+          fontFamily={"Bakbak One"}
+        >
+          RECENT
+        </Heading>
+        <Table size="sm">
+          <Thead>
+            <Tr>
+              <Th>Story Name</Th>
+              <Th>Created</Th>
+              <Th isNumeric>Views</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr
+              onClick={handleRowClick}
+              _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
+            >
+              <Td>yards</Td>
+              <Td>Jan 28th, 9:38pm</Td>
+              <Td isNumeric>1,234</Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
+    </>
   );
 };

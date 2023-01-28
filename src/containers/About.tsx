@@ -25,7 +25,7 @@ const CreatorIcon = ({ name, src, link }: CreatorIconProps) => {
 
 export const About = () => {
   return (
-    <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
+    <Stack>
       <Heading as="h1" fontFamily="Bakbak One">
         About this Project
       </Heading>

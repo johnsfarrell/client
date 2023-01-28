@@ -14,7 +14,7 @@ import { Stories } from "../containers/Stories";
 export const LandingPage = () => {
   return (
     <Box w={"100vw"} h={"100vh"}>
-      <Container py={10}>
+      <Container pt={"69"}>
         <Tabs isFitted variant="enclosed">
           <TabList>
             <Tab>Generate Story</Tab>
@@ -23,13 +23,13 @@ export const LandingPage = () => {
           </TabList>
 
           <TabPanels>
-            <TabPanel>
+            <TabPanel border={"1px solid #f0f0f0"} roundedBottom={"lg"}>
               <Form />
             </TabPanel>
-            <TabPanel>
+            <TabPanel border={"1px solid #f0f0f0"} roundedBottom={"lg"}>
               <Stories />
             </TabPanel>
-            <TabPanel>
+            <TabPanel border={"1px solid #f0f0f0"} roundedBottom={"lg"}>
               <About />
             </TabPanel>
           </TabPanels>

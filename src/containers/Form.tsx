@@ -65,39 +65,44 @@ export const Form = () => {
   };
 
   return (
-    <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
-      <form onSubmit={handleSubmit}>
-        <Stack alignItems={"center"} spacing={"4"}>
-          <Heading
-            as={"h1"}
-            textAlign={"center"}
-            mb={4}
-            fontFamily="Bakbak One"
-          >
-            Ghost Story Generator
-          </Heading>
-          <FormControl isRequired>
-            <FormLabel>Character Name</FormLabel>
-            <Input placeholder="John Hickey" onChange={handleNameChange} />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel>Character's Favorite Activity</FormLabel>
-            <Input placeholder="Hiking" onChange={handleActivityChange} />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel>Location</FormLabel>
-            <Input placeholder="Providence" onChange={handleLocationChange} />
-          </FormControl>
-          <Button
-            colorScheme={"green"}
-            type={"submit"}
-            w={"min-content"}
-            isLoading={buttonLoading}
-          >
-            Generate Your Story
-          </Button>
-        </Stack>
-      </form>
-    </Stack>
+    <form onSubmit={handleSubmit}>
+      <Stack alignItems={"center"} spacing={"4"}>
+        <Heading as={"h1"} textAlign={"center"} mb={4} fontFamily="Bakbak One">
+          Ghost Story Generator
+        </Heading>
+        <FormControl isRequired>
+          <FormLabel>Character Name</FormLabel>
+          <Input
+            placeholder="John Hickey"
+            onChange={handleNameChange}
+            disabled={buttonLoading}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Character's Favorite Activity</FormLabel>
+          <Input
+            placeholder="Hiking"
+            onChange={handleActivityChange}
+            disabled={buttonLoading}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Location</FormLabel>
+          <Input
+            placeholder="Providence"
+            onChange={handleLocationChange}
+            disabled={buttonLoading}
+          />
+        </FormControl>
+        <Button
+          colorScheme={"green"}
+          type={"submit"}
+          w={"min-content"}
+          isLoading={buttonLoading}
+        >
+          Generate Your Story
+        </Button>
+      </Stack>
+    </form>
   );
 };
