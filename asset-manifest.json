@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/hb-client/static/js/main.1c864461.js",
+    "main.js": "/hb-client/static/js/main.7a0a8861.js",
     "static/js/787.c4e7f8f9.chunk.js": "/hb-client/static/js/787.c4e7f8f9.chunk.js",
     "index.html": "/hb-client/index.html",
-    "main.1c864461.js.map": "/hb-client/static/js/main.1c864461.js.map",
+    "main.7a0a8861.js.map": "/hb-client/static/js/main.7a0a8861.js.map",
     "787.c4e7f8f9.chunk.js.map": "/hb-client/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.1c864461.js"
+    "static/js/main.7a0a8861.js"
   ]
 }
