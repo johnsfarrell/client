@@ -49,9 +49,9 @@ export const Form = () => {
       })
       .catch((err: any) => {
         toast({
-          title: "Failed  submitted.",
-          description: "Your colleges will appear soon.",
-          status: "success",
+          title: "Failed to submit.",
+          description: "Please try again.",
+          status: "error",
           duration: 5000,
           isClosable: true,
         });
