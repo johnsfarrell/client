@@ -48,7 +48,7 @@ export const Form = () => {
         });
         const story = res.data.result;
         console.log(res.data.result);
-        axios.post("https://hb-server.herokuapp.com/story/")
+        axios.post("https://hb-server.herokuapp.com/story/poststory")
 
         setButtonLoading(false);
       })
