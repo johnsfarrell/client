@@ -33,7 +33,7 @@ export const Form = () => {
     e.preventDefault();
     setButtonLoading(true);
     axios
-      .post("https://hb-server.herokuapp.com/story/test/", {
+      .post("https://hb-server.herokuapp.com/story/test", {
         name: name,
         activity: activity,
         location: location,
@@ -46,6 +46,8 @@ export const Form = () => {
           duration: 5000,
           isClosable: true,
         });
+        console.log(res.data.result);
+        setButtonLoading(false);
       })
       .catch((err: any) => {
         toast({
@@ -60,9 +62,17 @@ export const Form = () => {
   };
 
   return (
-    <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
+    <Stack
+      p={"10"}
+      spacing={"5"}
+      bgColor={"#fcfcfc"}
+      rounded={"lg"}
+      shadow={"xl"}
+    >
       <form onSubmit={handleSubmit}>
-        <Heading as={"h1"}>Ghost Story Generator</Heading>
+        <Heading as={"h1"} textAlign={"center"}>
+          Ghost Story Generator
+        </Heading>
         <FormControl isRequired>
           <FormLabel>Character Name</FormLabel>
           <Input placeholder="John Hickey" onChange={handleNameChange} />
