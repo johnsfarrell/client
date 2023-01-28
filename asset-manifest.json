@@ -1,12 +1,22 @@
 {
   "files": {
-    "main.js": "/hb-client/static/js/main.37bed7d5.js",
+    "main.css": "/hb-client/static/css/main.6d4bf2f9.css",
+    "main.js": "/hb-client/static/js/main.c9727287.js",
+    "static/js/227.791e3fd7.chunk.js": "/hb-client/static/js/227.791e3fd7.chunk.js",
+    "static/js/526.b89ee91f.chunk.js": "/hb-client/static/js/526.b89ee91f.chunk.js",
+    "static/js/232.9f824fb7.chunk.js": "/hb-client/static/js/232.9f824fb7.chunk.js",
+    "static/js/237.d254120e.chunk.js": "/hb-client/static/js/237.d254120e.chunk.js",
     "static/js/787.c4e7f8f9.chunk.js": "/hb-client/static/js/787.c4e7f8f9.chunk.js",
     "index.html": "/hb-client/index.html",
-    "main.37bed7d5.js.map": "/hb-client/static/js/main.37bed7d5.js.map",
+    "main.c9727287.js.map": "/hb-client/static/js/main.c9727287.js.map",
+    "227.791e3fd7.chunk.js.map": "/hb-client/static/js/227.791e3fd7.chunk.js.map",
+    "526.b89ee91f.chunk.js.map": "/hb-client/static/js/526.b89ee91f.chunk.js.map",
+    "232.9f824fb7.chunk.js.map": "/hb-client/static/js/232.9f824fb7.chunk.js.map",
+    "237.d254120e.chunk.js.map": "/hb-client/static/js/237.d254120e.chunk.js.map",
     "787.c4e7f8f9.chunk.js.map": "/hb-client/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.37bed7d5.js"
+    "static/css/main.6d4bf2f9.css",
+    "static/js/main.c9727287.js"
   ]
 }
