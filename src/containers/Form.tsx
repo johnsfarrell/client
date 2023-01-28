@@ -55,6 +55,7 @@ export const Form = () => {
           duration: 5000,
           isClosable: true,
         });
+        setButtonLoading(false);
       });
   };
 
