@@ -13,6 +13,10 @@ import {
 } from "@chakra-ui/react";
 
 export const Stories = () => {
+  const handleRowClick = () => {
+    window.location.href = "/#/story/yards";
+  };
+
   return (
     <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
       <TableContainer>
@@ -21,16 +25,17 @@ export const Stories = () => {
             <Tr>
               <Th>Story Name</Th>
               <Th>Created</Th>
-              <Th isNumeric>Read</Th>
+              <Th isNumeric>Views</Th>
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
+            <Tr
+              onClick={handleRowClick}
+              _hover={{ backgroundColor: "#f0f0f0f0" }}
+            >
               <Td>yards</Td>
               <Td>Jan 28th, 9:38pm</Td>
-              <Td isNumeric>
-                <Link>Read</Link>
-              </Td>
+              <Td isNumeric>1,234</Td>
             </Tr>
           </Tbody>
           <Tfoot>

@@ -18,7 +18,7 @@ export const LandingPage = () => {
         <Tabs isFitted variant="enclosed">
           <TabList>
             <Tab>Generate Story</Tab>
-            <Tab>Stories Generated</Tab>
+            <Tab>Popular Stories</Tab>
             <Tab>About Project</Tab>
           </TabList>
 

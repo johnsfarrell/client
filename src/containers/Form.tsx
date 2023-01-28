@@ -62,37 +62,38 @@ export const Form = () => {
   };
 
   return (
-    <Stack
-      p={"10"}
-      spacing={"5"}
-      bgColor={"#fcfcfc"}
-      rounded={"lg"}
-      shadow={"xl"}
-    >
+    <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
       <form onSubmit={handleSubmit}>
-        <Heading as={"h1"} textAlign={"center"}>
-          Ghost Story Generator
-        </Heading>
-        <FormControl isRequired>
-          <FormLabel>Character Name</FormLabel>
-          <Input placeholder="John Hickey" onChange={handleNameChange} />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Character's Favorite Activity</FormLabel>
-          <Input placeholder="Hiking" onChange={handleActivityChange} />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Location</FormLabel>
-          <Input placeholder="Providence" onChange={handleLocationChange} />
-        </FormControl>
-        <Button
-          colorScheme={"green"}
-          type={"submit"}
-          w={"min-content"}
-          isLoading={buttonLoading}
-        >
-          Generate Your Story
-        </Button>
+        <Stack alignItems={"center"} spacing={"4"}>
+          <Heading
+            as={"h1"}
+            textAlign={"center"}
+            mb={4}
+            fontFamily="Bakbak One"
+          >
+            Ghost Story Generator
+          </Heading>
+          <FormControl isRequired>
+            <FormLabel>Character Name</FormLabel>
+            <Input placeholder="John Hickey" onChange={handleNameChange} />
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel>Character's Favorite Activity</FormLabel>
+            <Input placeholder="Hiking" onChange={handleActivityChange} />
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel>Location</FormLabel>
+            <Input placeholder="Providence" onChange={handleLocationChange} />
+          </FormControl>
+          <Button
+            colorScheme={"green"}
+            type={"submit"}
+            w={"min-content"}
+            isLoading={buttonLoading}
+          >
+            Generate Your Story
+          </Button>
+        </Stack>
       </form>
     </Stack>
   );

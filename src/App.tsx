@@ -1,6 +1,8 @@
-import { ChakraProvider, theme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { LandingPage } from "./pages/LandingPage";
+import theme from "./theme";
+import "./theme/styles.css";
 
 export const App = () => {
   const [hashtag, setHashtag] = useState(window.location.hash);

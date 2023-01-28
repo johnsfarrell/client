@@ -26,8 +26,10 @@ const CreatorIcon = ({ name, src, link }: CreatorIconProps) => {
 export const About = () => {
   return (
     <Stack p={"10"} bgColor={"#fcfcfc"} rounded={"lg"} shadow={"xl"}>
-      <Heading as="h1">About this Project</Heading>
-      <Heading size="xs" as="h2">
+      <Heading as="h1" fontFamily="Bakbak One">
+        About this Project
+      </Heading>
+      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"}>
         Description
       </Heading>
       <Text>
@@ -41,7 +43,7 @@ export const About = () => {
         their own ghost stories and share them with friends, adding an extra
         layer of fun to storytelling.
       </Text>
-      <Heading size="xs" as="h2">
+      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"}>
         Creators
       </Heading>
       <Wrap>
