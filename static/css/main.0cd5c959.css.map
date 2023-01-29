@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0cd5c959.css","mappings":"yOAAA,mBACE,sBACF,CAEA,QACE,SAAU,CACV,qBACF,CAEA,iBACE,SACF","sources":["containers/Story.css"],"sourcesContent":["::selection .story {\n  background: transparent;\n}\n\n.Spline {\n  opacity: 1;\n  transition: opacity 2s;\n}\n\n.Spline.fade-out {\n  opacity: 0;\n}\n"],"names":[],"sourceRoot":""}
