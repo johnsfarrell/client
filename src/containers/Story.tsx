@@ -105,6 +105,8 @@ export const Story = () => {
   const scenes = [
     "https://prod.spline.design/iqDdsKTYCDNl6rDA/scene.splinecode",
     "https://prod.spline.design/tM7mu0ihNJt4CgyD/scene.splinecode",
+    "https://prod.spline.design/SVhKuLpIKSTqLY6l/scene.splinecode",
+    "https://prod.spline.design/rtGNqIi67BrI6DVy/scene.splinecode",
   ];
 
   const [scene, setScene] = useState("");
