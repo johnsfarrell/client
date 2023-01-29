@@ -102,6 +102,11 @@ export const Story = () => {
     setDisabledAudio(!disabledAudio);
   };
 
+  const scenes = [
+    "https://prod.spline.design/DV0LmECggYTiJScO/scene.splinecode",
+    "https://prod.spline.design/tM7mu0ihNJt4CgyD/scene.splinecode",
+  ];
+
   return !isLoading && story !== null && story ? (
     <Box
       w={"100vw"}
@@ -117,7 +122,7 @@ export const Story = () => {
       <audio id="music" src={process.env.PUBLIC_URL + "/song1.mp3"}></audio>
       <audio id="music2" src={process.env.PUBLIC_URL + "/song2.mp3"}></audio>
       <Spline
-        scene={"https://prod.spline.design/DV0LmECggYTiJScO/scene.splinecode"}
+        scene={scenes[Math.floor(Math.random() * scenes.length)]}
         style={{ position: "absolute" }}
         onClick={handlePageClick}
         className={page >= story.story.length ? "Spline fade-out" : "Spline"}
