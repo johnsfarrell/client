@@ -12,18 +12,25 @@ import Spline from "@splinetool/react-spline";
 import { useState, useEffect } from "react";
 import "./Story.css";
 import axios from "axios";
-import { FadeBox } from "../components/MotionBox";
+import { Typewriter } from "react-simple-typewriter";
 
 export const Story = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [typing, setTyping] = useState(true);
   const [page, setPage] = useState(-1);
 
   const handlePageClick = () => {
-    setPage(page + 1);
-    playAudio();
-    if (page >= story.story.length) {
-      window.location.hash = "#";
+    if (typing && story.story[page]) {
+      setTyping(!typing);
+    } else if (typing && !story.story[page]) {
+      setPage(page + 1);
+    } else {
+      setTyping(true);
+      setPage(page + 1);
+      playAudio();
+      if (page >= story.story.length) {
+        window.location.hash = "#";
+      }
     }
   };
 
@@ -98,7 +105,8 @@ export const Story = () => {
   return !isLoading && story !== null && story ? (
     <Box
       w={"100vw"}
-      h={"100vh"}
+      minH={"100vh"}
+      maxH={"100vh"}
       display={"flex"}
       alignItems={"flex-end"}
       _hover={{ cursor: "pointer" }}
@@ -122,25 +130,31 @@ export const Story = () => {
           {disabledAudio ? "🔇" : "🔊"}
         </Button>
       </Box>
-      {page >= story.story.length && (
-        <FadeBox>
-          <Heading
-            className="font-effect-fire-animation"
-            textAlign={"center"}
-            mb="50vh"
-            fontFamily={"Sofia"}
-          >
-            The End
-          </Heading>
-        </FadeBox>
+      {page >= story.story.length ? (
+        <Heading
+          className="font-effect-fire-animation"
+          textAlign={"center"}
+          mb="50vh"
+          fontFamily={"Sofia"}
+        >
+          The End
+        </Heading>
+      ) : (
+        <Heading
+          color={"#696969"}
+          textAlign={"center"}
+          mb="50vh"
+          fontFamily={"Bakbak One"}
+        >
+          Loading...
+        </Heading>
       )}
       <Container
-        bgColor={"#ffffff"}
-        border={"4px solid #cccccc"}
-        borderBottom={"0"}
+        bgColor={"#252525"}
+        border={"4px solid #424242"}
         maxW={"container.md"}
         p={5}
-        roundedTop={"xl"}
+        rounded={"xl"}
         onClick={handlePageClick}
         _hover={{ cursor: "pointer" }}
         position={"absolute"}
@@ -148,18 +162,30 @@ export const Story = () => {
         right={0}
         margin={"auto"}
         display={page >= story.story.length ? "none" : undefined}
+        mb={15}
       >
-        <Flex
-          justifyContent={"space-between"}
-          alignItems={"flex-end"}
-          pb={"10"}
-          mb={2}
-        >
-          <Box fontSize={"xl"}>
+        <Flex justifyContent={"space-between"} h={"140"}>
+          <Box
+            fontSize={"lg"}
+            className={
+              typing && story.story[page]
+                ? "font-effect-fire-animation"
+                : undefined
+            }
+            color={"#ffffff"}
+          >
             {page >= story.story.length ? (
               <></>
             ) : story.story[page] ? (
-              <>{story.story[page]}</>
+              typing ? (
+                <Typewriter
+                  words={[story.story[page]]}
+                  loop={1}
+                  typeSpeed={18}
+                ></Typewriter>
+              ) : (
+                story.story[page] + " 👉"
+              )
             ) : (
               <>
                 <Heading
@@ -175,9 +201,6 @@ export const Story = () => {
                 </Text>
               </>
             )}
-          </Box>
-          <Box display={page >= story.story.length ? "none" : "unset"}>
-            {">"}
           </Box>
         </Flex>
         {page >= story.story.length && (

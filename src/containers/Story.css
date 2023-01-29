@@ -10,3 +10,18 @@
 .Spline.fade-out {
   opacity: 0;
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

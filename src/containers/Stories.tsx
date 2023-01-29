@@ -59,7 +59,10 @@ export const Stories = () => {
                   key={id}
                   _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
                 >
-                  <Td>{title}</Td>
+                  <Td>
+                    {title.substring(0, title.length > 70 ? 70 : title.length)}
+                    {title.length > 70 && "..."}
+                  </Td>
                   <Td>{new Date(date).toLocaleDateString()}</Td>
                   <Td isNumeric>{views}</Td>
                 </Tr>
@@ -94,7 +97,10 @@ export const Stories = () => {
                   key={id}
                   _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
                 >
-                  <Td>{title}</Td>
+                  <Td>
+                    {title.substring(0, title.length > 70 ? 70 : title.length)}
+                    {title.length > 70 && "..."}
+                  </Td>
                   <Td>{new Date(date).toLocaleTimeString()}</Td>
                   <Td isNumeric>{views}</Td>
                 </Tr>
