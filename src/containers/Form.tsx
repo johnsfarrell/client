@@ -39,6 +39,26 @@ export const Form = () => {
         location: location,
       })
       .then((res: any) => {
+
+        const story = res.data.result;
+        console.log(res.data.result);
+        const splitUp = story.split('\n');
+        let title = "";
+        for(let i = 0; i < splitUp.length; i++){
+          if(splitUp[i].indexOf("Title:") > -1)
+          {
+            let noSpaces = splitUp[i].split(" ")
+            console.log(noSpaces);
+            noSpaces = noSpaces.splice(1, noSpaces.length);
+            title = ""
+            for(let k = 0; k < noSpaces.length; k++)
+            {
+              title += noSpaces[k] + " "
+            }
+            break;
+          }
+        }
+       console.log(title)
         toast({
           title: "Details submitted.",
           description: "Your colleges will appear soon.",
@@ -46,9 +66,12 @@ export const Form = () => {
           duration: 5000,
           isClosable: true,
         });
-        const story = res.data.result;
-        console.log(res.data.result);
-        axios.post("https://hb-server.herokuapp.com/story/poststory")
+        
+       axios.post("https://hb-server.herokuapp.com/story/poststory", {
+          title: title,
+          story: story,
+          views: 0,
+        })
 
         setButtonLoading(false);
       })
