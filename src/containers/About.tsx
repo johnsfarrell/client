@@ -29,7 +29,7 @@ export const About = () => {
       <Heading as="h1" fontFamily="Bakbak One">
         About this Project
       </Heading>
-      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"}>
+      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"} pt={4}>
         Description
       </Heading>
       <Text>
@@ -43,7 +43,7 @@ export const About = () => {
         their own ghost stories and share them with friends, adding an extra
         layer of fun to storytelling.
       </Text>
-      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"}>
+      <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"} pt={4}>
         Creators
       </Heading>
       <Wrap>

@@ -34,7 +34,7 @@ export const Form = () => {
     e.preventDefault();
     setButtonLoading(true);
     toast({
-      title: "Story now generating!.",
+      title: "Story now generating!",
       description: "This may take a minute...",
       status: "success",
       duration: 5000,
@@ -47,14 +47,12 @@ export const Form = () => {
         location: location,
       })
       .then((res: any) => {
-        const story = res.data.result;
-        console.log(res.data.result);
+        let story = res.data.result;
         const splitUp = story.split("\n");
         let title = "";
         for (let i = 0; i < splitUp.length; i++) {
           if (splitUp[i].indexOf("Title:") > -1) {
             let noSpaces = splitUp[i].split(" ");
-            console.log(noSpaces);
             noSpaces = noSpaces.splice(1, noSpaces.length);
             title = "";
             for (let k = 0; k < noSpaces.length; k++) {
@@ -63,19 +61,28 @@ export const Form = () => {
             break;
           }
         }
-        console.log(title);
-        toast({
-          title: "Story generated.",
-          description: "Your story will be shared shortly.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        axios.post("https://hb-server.herokuapp.com/story/poststory", {
-          title: title,
-          story: story,
-          views: 0,
-        });
+        if (!title) title = splitUp[2];
+        if (!title || title.length < 1) title = "A Spooky Story";
+        if (title === splitUp[0]) {
+          story = story
+            .substring(story.indexOf("Title"))
+            .split("\n\n")
+            .splice(2);
+        } else {
+          story = story
+            .substring(story.indexOf("Title"))
+            .split("\n\n")
+            .splice(1);
+        }
+        axios
+          .post("https://hb-server.herokuapp.com/story/poststory", {
+            title: title,
+            story: story,
+            views: 0,
+          })
+          .then((res) => {
+            window.location.href = "#story/" + res.data.result;
+          });
         setButtonLoading(false);
       })
       .catch((err: any) => {
@@ -94,7 +101,7 @@ export const Form = () => {
     <form onSubmit={handleSubmit}>
       <Stack alignItems={"center"} spacing={"4"}>
         <Heading as={"h1"} textAlign={"center"} mb={4} fontFamily="Bakbak One">
-          Ghost Story Generator
+          Ghost Story Generator 👻
         </Heading>
         <Container>
           <FormControl isRequired>
@@ -128,7 +135,7 @@ export const Form = () => {
           w={"min-content"}
           isLoading={buttonLoading}
         >
-          Generate Your Story
+          Generate Your Story 👻
         </Button>
       </Stack>
     </form>

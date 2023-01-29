@@ -17,7 +17,6 @@ export const LandingPage = () => {
     <Box
       w={"100vw"}
       h={"100vh"}
-      bg={"#38285c"}
       bgImage={process.env.PUBLIC_URL + "/pattern.svg"}
     >
       <Box

@@ -8,11 +8,29 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export const Stories = () => {
-  const handleRowClick = () => {
-    window.location.href = "/#/story/yards";
+  const handleRowClick = (hash: string) => {
+    window.location.href = hash;
   };
+
+  const [popularStories, setPopularStories] = useState([]);
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://hb-server.herokuapp.com/story/getrecentstory")
+      .then((res) => {
+        setStories(res.data.result);
+      });
+    axios
+      .get("https://hb-server.herokuapp.com/story/getpopularstory")
+      .then((res) => {
+        setPopularStories(res.data.result);
+      });
+  }, []);
 
   return (
     <>
@@ -23,7 +41,7 @@ export const Stories = () => {
           mb={"4"}
           fontFamily={"Bakbak One"}
         >
-          POPULAR
+          POPULAR ✨
         </Heading>
         <Table size="sm">
           <Thead>
@@ -34,14 +52,19 @@ export const Stories = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr
-              onClick={handleRowClick}
-              _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
-            >
-              <Td>yards</Td>
-              <Td>Jan 28th, 9:38pm</Td>
-              <Td isNumeric>1,234</Td>
-            </Tr>
+            {popularStories.map(({ title, date, views, id }: any) => {
+              return (
+                <Tr
+                  onClick={() => handleRowClick("/#story/" + id)}
+                  key={id}
+                  _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
+                >
+                  <Td>{title}</Td>
+                  <Td>{new Date(date).toLocaleDateString()}</Td>
+                  <Td isNumeric>{views}</Td>
+                </Tr>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>
@@ -53,7 +76,7 @@ export const Stories = () => {
           mt={"10"}
           fontFamily={"Bakbak One"}
         >
-          RECENT
+          RECENT ⌛
         </Heading>
         <Table size="sm">
           <Thead>
@@ -64,14 +87,19 @@ export const Stories = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr
-              onClick={handleRowClick}
-              _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
-            >
-              <Td>yards</Td>
-              <Td>Jan 28th, 9:38pm</Td>
-              <Td isNumeric>1,234</Td>
-            </Tr>
+            {stories.map(({ title, date, views, id }: any) => {
+              return (
+                <Tr
+                  onClick={() => handleRowClick("/#story/" + id)}
+                  key={id}
+                  _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
+                >
+                  <Td>{title}</Td>
+                  <Td>{new Date(date).toLocaleTimeString()}</Td>
+                  <Td isNumeric>{views}</Td>
+                </Tr>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>

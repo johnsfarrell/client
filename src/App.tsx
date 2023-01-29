@@ -21,7 +21,7 @@ export const App = () => {
   return (
     <ChakraProvider theme={theme}>
       {(hashtag === "" || hashtag === "#") && <LandingPage />}
-      {hashtag === "#story" && <Story />}
+      {hashtag.startsWith("#story") && hashtag !== "#story" && <Story />}
     </ChakraProvider>
   );
 };
