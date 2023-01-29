@@ -194,7 +194,7 @@ export const Story = () => {
                 <Heading
                   as="h2"
                   textAlign={"center"}
-                  fontSize={"4xl"}
+                  fontSize={{ sm: "4xl", base: "2xl" }}
                   fontFamily={"Bakbak One"}
                 >
                   {story.title}
