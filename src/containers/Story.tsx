@@ -153,6 +153,7 @@ export const Story = () => {
           justifyContent={"space-between"}
           alignItems={"flex-end"}
           pb={"10"}
+          mb={2}
         >
           <Box fontSize={"xl"}>
             {page >= story.story.length ? (
