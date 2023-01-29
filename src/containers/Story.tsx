@@ -19,6 +19,7 @@ export const Story = () => {
 
   const handlePageClick = () => {
     setPage(page + 1);
+    playAudio();
   };
 
   const [story, setStory] = useState<any>(null);
@@ -42,6 +43,17 @@ export const Story = () => {
         });
   }, []);
 
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const playAudio = () => {
+    const audio = document.getElementById("audio") as HTMLAudioElement;
+    if (page >= story.story.length) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setAudioPlaying(!audioPlaying);
+  };
+
   return !isLoading && story !== null && story ? (
     <Box
       w={"100vw"}
@@ -50,6 +62,7 @@ export const Story = () => {
       alignItems={"flex-end"}
       _hover={{ cursor: "pointer" }}
     >
+      <audio id="audio" src={process.env.PUBLIC_URL + "/speaking.mp3"}></audio>
       <Spline
         scene={"https://prod.spline.design/DV0LmECggYTiJScO/scene.splinecode"}
         style={{ position: "absolute" }}
@@ -81,7 +94,7 @@ export const Story = () => {
             {page >= story.story.length ? (
               <i>The End...</i>
             ) : story.story[page] ? (
-              story.story[page] + "..."
+              <>{story.story[page]}</>
             ) : (
               <Heading as="h2" fontSize={"xl"} fontFamily={"Bakbak One"}>
                 {story.title}

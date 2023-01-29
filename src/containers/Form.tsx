@@ -6,9 +6,11 @@ import {
   Input,
   Stack,
   useToast,
+  Text,
+  Flex,
   Container,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const Form = () => {
@@ -97,6 +99,77 @@ export const Form = () => {
       });
   };
 
+  const handleRandomize = () => {
+    setName(famousNames[Math.floor(Math.random() * famousNames.length)]);
+    setActivity(activities[Math.floor(Math.random() * activities.length)]);
+    setLocation(famousPlaces[Math.floor(Math.random() * famousPlaces.length)]);
+  };
+
+  // Famous names
+  var famousNames = [
+    "Michael Jordan",
+    "Albert Einstein",
+    "Steve Jobs",
+    "Mahatma Gandhi",
+    "Princess Diana",
+    "Mark Zuckerberg",
+    "Elon Musk",
+    "Beyoncé",
+    "Nelson Mandela",
+    "Bill Gates",
+  ];
+
+  // Famous places
+  var famousPlaces = [
+    "Eiffel Tower",
+    "Great Wall of China",
+    "Sistine Chapel",
+    "Taj Mahal",
+    "Grand Canyon",
+    "Sydney Opera House",
+    "Statue of Liberty",
+    "Mount Everest",
+    "Niagara Falls",
+    "Machu Picchu",
+  ];
+
+  // Different activities
+  var activities = [
+    "hiking",
+    "skiing",
+    "swimming",
+    "reading",
+    "cooking",
+    "biking",
+    "dancing",
+    "yoga",
+    "surfing",
+    "rock climbing",
+  ];
+
+  const [word, setWord] = useState("");
+  async function logWithDelay(words: any) {
+    for (let i = 0; i < words.length; i++) {
+      await new Promise((resolve) => setTimeout(resolve, i * 1000));
+      setWord(words[i]);
+    }
+  }
+
+  useEffect(() => {
+    logWithDelay([
+      "This ghost story is sure to raise your spirits.",
+      "Get ready to be haunted by this tale of terror.",
+      "This story is so spooky, it's sure to give you goosebumps.",
+      "Brace yourself for a spine-tingling story that will leave you ghostly.",
+      "This story is sure to be a haunting experience.",
+      "Are you ready to be scared out of your wits by this ghostly tale?",
+      "This story is so eerie, it's sure to send shivers down your spine.",
+      "Get ready to be spooked by this ghostly tale of terror.",
+      "This story is sure to be a creepy, crawly experience.",
+      "Are you ready to be haunted by the spine-chilling story that is about to unfold?",
+    ]);
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
       <Stack alignItems={"center"} spacing={"4"}>
@@ -110,33 +183,52 @@ export const Form = () => {
               placeholder="John Hickey"
               onChange={handleNameChange}
               disabled={buttonLoading}
+              defaultValue={name}
             />
           </FormControl>
-          <FormControl isRequired>
+          <FormControl isRequired pt={5}>
             <FormLabel>Character's Favorite Activity</FormLabel>
             <Input
               placeholder="Hiking"
               onChange={handleActivityChange}
               disabled={buttonLoading}
+              defaultValue={activity}
             />
           </FormControl>
-          <FormControl isRequired>
+          <FormControl isRequired pt={5}>
             <FormLabel>Location</FormLabel>
             <Input
               placeholder="Providence"
               onChange={handleLocationChange}
               disabled={buttonLoading}
+              defaultValue={location}
             />
           </FormControl>
         </Container>
-        <Button
-          colorScheme={"green"}
-          type={"submit"}
-          w={"min-content"}
-          isLoading={buttonLoading}
-        >
-          Generate Your Story 👻
-        </Button>
+        <Flex>
+          <Button
+            colorScheme={"green"}
+            type={"submit"}
+            w={"min-content"}
+            isLoading={buttonLoading}
+            mr={1}
+          >
+            Generate Your Story 👻
+          </Button>
+          <Button
+            colorScheme={"orange"}
+            onClick={handleRandomize}
+            w={"min-content"}
+            isDisabled={buttonLoading}
+          >
+            🎲
+          </Button>
+        </Flex>
+        {buttonLoading && (
+          <Text color={"#666666"}>
+            <i>{word}</i>
+          </Text>
+        )}
       </Stack>
     </form>
   );
