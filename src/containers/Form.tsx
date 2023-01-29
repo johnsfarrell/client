@@ -105,6 +105,17 @@ export const Form = () => {
     setActivity(str.charAt(0).toUpperCase() + str.slice(1));
     setLocation(famousPlaces[Math.floor(Math.random() * famousPlaces.length)]);
   };
+  const handleBrownRandomize = () => {
+    setName(
+      famousPeopleAtBrown[
+        Math.floor(Math.random() * famousPeopleAtBrown.length)
+      ]
+    );
+    let str =
+      brownActivities[Math.floor(Math.random() * brownActivities.length)];
+    setActivity(str.charAt(0).toUpperCase() + str.slice(1));
+    setLocation(brownPlaces[Math.floor(Math.random() * brownPlaces.length)]);
+  };
 
   // Famous names
   var famousNames = [
@@ -182,7 +193,6 @@ export const Form = () => {
     "Sydney Opera House",
     "Big Ben",
     "Saint Basil's Cathedral",
-    "Christ the Redeemer",
     "Petra",
     "Santorini",
     "Cinque Terre",
@@ -260,6 +270,74 @@ export const Form = () => {
     "Meditation Retreat",
   ];
 
+  var brownPlaces = [
+    "The Ratty",
+    "The Blue Room",
+    "The Keeney Quad",
+    "The Sciences Library",
+    "The Wriston Quad",
+    "The Stephen Robert '62 Campus Center",
+    "The Salomon Center for Teaching",
+    "The Granoff Center for the Creative Arts",
+    "The Pembroke Campus",
+    "The Perry and Marty Granoff Center for the Creative Arts",
+    "The Brown/RISD Hillel",
+    "The John D. Rockefeller Jr. Library",
+    "The Brown/RISD Dual Degree Program",
+    "The Brown/Trinity Rep Consortium",
+    "The Brown/Rhode Island School of Design Consortium",
+    "The Brown/Oxford Consortium",
+    "The Brown/Ecole Normale Supérieure Consortium",
+    "The Brown/Pembroke Center",
+    "The Brown/Butler Consortium",
+    "The Brown/RISD Dual Degree Program",
+  ];
+  var famousPeopleAtBrown = [
+    "John D. Rockefeller Jr.",
+    "Emma Watson",
+    "John Krasinski",
+    "Ted Turner",
+    "Maurice Sendak",
+    "Natalie Portman",
+    "Jhumpa Lahiri",
+    "Julianne Moore",
+    "Reed Hastings",
+    "John D. Rockerfeller III",
+    "Seth MacFarlane",
+    "Vanessa Williams",
+    "Angela Davis",
+    "Ted Danson",
+    "Michael Eisner",
+    "Bobby Kennedy Jr.",
+    "David Cicilline",
+    "Bobby Jindal",
+    "Patricia Churchland",
+    "Stephen Kinzer",
+  ];
+  const brownActivities = [
+    "Attending a lecture at Watson",
+    "Visiting the David Winton Bell Gallery",
+    "Taking a tour of the Main Green",
+    "Joining Brown Debate Union",
+    "Attending a performance at the Granoff Center for the Creative Arts",
+    "Studying in the Rockefeller Library",
+    "Exploring the Brown University Biological Preserve",
+    "Attending a Brown vs Harvard football game",
+    "Visiting the Brown Arts Initiative",
+    "Taking a walk along the nearby Blackstone Boulevard",
+    "Visiting the Haffenreffer Museum of Anthropology",
+    "Volunteering with the Swearer Center for Public Service",
+    "Attending a performance at the Brown/Trinity Playwrights Rep",
+    "Visiting the Office of the Chaplains",
+    "Taking a free yoga class at the Brown University Mindfulness Center",
+    "Visiting the Cogut Center for the Humanities",
+    "Joining the Brown University Outdoor Leadership Training Program",
+    "Attending a concert at the Brown University Concert Agency",
+    "Visiting the Alpert Medical School",
+    "Munching in the Ratty",
+    "Hooping in the OMAC",
+  ];
+
   const [word, setWord] = useState("");
   async function logWithDelay(words: any) {
     for (let i = 0; i < words.length; i++) {
@@ -293,7 +371,7 @@ export const Form = () => {
           <FormControl isRequired>
             <FormLabel>Character Name</FormLabel>
             <Input
-              placeholder="John Hickey"
+              placeholder="Isaac Newton"
               onChange={handleNameChange}
               disabled={buttonLoading}
               defaultValue={name}
@@ -311,7 +389,7 @@ export const Form = () => {
           <FormControl isRequired pt={5}>
             <FormLabel>Location</FormLabel>
             <Input
-              placeholder="Providence"
+              placeholder="Providence, Rhode Island"
               onChange={handleLocationChange}
               disabled={buttonLoading}
               defaultValue={location}
@@ -329,12 +407,21 @@ export const Form = () => {
             Generate Your Story 👻
           </Button>
           <Button
-            colorScheme={"orange"}
+            colorScheme={"teal"}
+            mr={1}
             onClick={handleRandomize}
             w={"min-content"}
             isDisabled={buttonLoading}
           >
             🎲
+          </Button>
+          <Button
+            colorScheme={"orange"}
+            onClick={handleBrownRandomize}
+            w={"min-content"}
+            isDisabled={buttonLoading}
+          >
+            🐻🤎
           </Button>
         </Flex>
         {buttonLoading && (

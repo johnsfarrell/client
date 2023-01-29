@@ -16,17 +16,30 @@ export const LandingPage = () => {
   return (
     <Box
       w={"100vw"}
-      h={"100vh"}
+      minH={"100vh"}
       bgImage={process.env.PUBLIC_URL + "/pattern.svg"}
     >
       <Box
         bgGradient={
-          "linear-gradient(to right, rgba(225,225,225,0.95) 0%, rgba(225,225,225,0.97) 10%, rgba(225,225,225,.99) 30%, rgba(225,225,225,.99) 70%, rgba(225,225,225,0.97) 90%, rgba(225,225,225,0.95) 100%);"
+          "linear-gradient(to right, rgba(214,156,47,0.95) 0%, rgba(214,156,47,0.97) 10%, rgba(214,156,47,.99) 30%, rgba(214,156,47,.99) 70%, rgba(214,156,47,0.97) 90%, rgba(214,156,47,0.95) 100%);"
         }
         h={"100vh"}
       >
-        <Container pt={"69"} maxW={"container.md"}>
+        <Container maxW={"container.md"}>
           <BounceBox>
+            <img
+              alt={"campfire"}
+              width={"100px"}
+              src={
+                "https://i.pinimg.com/originals/b9/67/d1/b967d1e281bd0aaca615e889386b0496.gif"
+              }
+              style={{
+                position: "relative",
+                top: "8px",
+                right: "18px",
+                margin: "0",
+              }}
+            />
             <Tabs isFitted variant="soft-rounded" shadow={"xl"}>
               <TabList bgColor={"#ffffff"} roundedTop={"lg"} px={5} pt={5}>
                 <Tab>Generate Story</Tab>

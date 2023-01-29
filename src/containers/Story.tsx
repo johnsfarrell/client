@@ -121,7 +121,6 @@ export const Story = () => {
           justifyContent={"space-between"}
           alignItems={"flex-end"}
           pb={"10"}
-          className={"story"}
         >
           <Box fontSize={"xl"}>
             {page >= story.story.length ? (
@@ -129,8 +128,13 @@ export const Story = () => {
             ) : story.story[page] ? (
               <>{story.story[page]}</>
             ) : (
-              <Heading as="h2" fontSize={"4xl"} fontFamily={"Bakbak One"}>
-                {story.title}...
+              <Heading
+                as="h2"
+                textAlign={"center"}
+                fontSize={"4xl"}
+                fontFamily={"Bakbak One"}
+              >
+                {story.title} 👆
               </Heading>
             )}
           </Box>

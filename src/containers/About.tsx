@@ -44,7 +44,7 @@ export const About = () => {
         them with friends, adding an extra layer of fun to storytelling.
       </Text>
       <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"} pt={4}>
-        Creators
+        Creators (Ctrl+Alt+Defeat)
       </Heading>
       <Wrap>
         <CreatorIcon
