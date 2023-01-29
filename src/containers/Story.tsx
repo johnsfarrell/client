@@ -6,6 +6,7 @@ import {
   Center,
   Link,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import Spline from "@splinetool/react-spline";
 import { useState, useEffect } from "react";
@@ -49,21 +50,49 @@ export const Story = () => {
 
   const [audioPlaying, setAudioPlaying] = useState(false);
   const playAudio = () => {
+    if (!disabledAudio) {
+      const audio = document.getElementById("audio") as HTMLAudioElement;
+      const music = document.getElementById("music") as HTMLAudioElement;
+      const music2 = document.getElementById("music2") as HTMLAudioElement;
+      if (page < 1) {
+        music.play();
+      } else {
+        music.pause();
+        music2.play();
+      }
+      if (page >= story.story.length - 1) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setAudioPlaying(!audioPlaying);
+    }
+  };
+
+  const [disabledAudio, setDisabledAudio] = useState(false);
+  const toggleAudio = () => {
     const audio = document.getElementById("audio") as HTMLAudioElement;
     const music = document.getElementById("music") as HTMLAudioElement;
     const music2 = document.getElementById("music2") as HTMLAudioElement;
-    if (page < 1) {
-      music.play();
-    } else {
-      music.pause();
-      music2.play();
-    }
-    if (page >= story.story.length - 1) {
-      audio.pause();
-    } else {
+    if (disabledAudio) {
       audio.play();
+      if (page < 1) {
+        music.play();
+      } else {
+        music.pause();
+        music2.play();
+      }
+      if (page >= story.story.length - 1) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    } else {
+      audio.pause();
+      music.pause();
+      music2.pause();
     }
-    setAudioPlaying(!audioPlaying);
+    setDisabledAudio(!disabledAudio);
   };
 
   return !isLoading && story !== null && story ? (
@@ -89,6 +118,9 @@ export const Story = () => {
         <Link href={"#"}>
           <Button>Home</Button>
         </Link>
+        <Button ml={1} fontSize={"3xl"} onClick={toggleAudio}>
+          {disabledAudio ? "🔇" : "🔊"}
+        </Button>
       </Box>
       {page >= story.story.length && (
         <FadeBox>
@@ -128,14 +160,19 @@ export const Story = () => {
             ) : story.story[page] ? (
               <>{story.story[page]}</>
             ) : (
-              <Heading
-                as="h2"
-                textAlign={"center"}
-                fontSize={"4xl"}
-                fontFamily={"Bakbak One"}
-              >
-                {story.title} 👆
-              </Heading>
+              <>
+                <Heading
+                  as="h2"
+                  textAlign={"center"}
+                  fontSize={"4xl"}
+                  fontFamily={"Bakbak One"}
+                >
+                  {story.title}
+                </Heading>
+                <Text textAlign={"center"} fontSize={"md"} pt={5}>
+                  (Tap To Begin 👆)
+                </Text>
+              </>
             )}
           </Box>
           <Box display={page >= story.story.length ? "none" : "unset"}>
