@@ -6,6 +6,7 @@ import {
   Input,
   Stack,
   useToast,
+  Container,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
@@ -32,6 +33,13 @@ export const Form = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setButtonLoading(true);
+    toast({
+      title: "Story now generating!.",
+      description: "This may take a minute...",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
     axios
       .post("https://hb-server.herokuapp.com/story/test", {
         name: name,
@@ -39,40 +47,35 @@ export const Form = () => {
         location: location,
       })
       .then((res: any) => {
-
         const story = res.data.result;
         console.log(res.data.result);
-        const splitUp = story.split('\n');
+        const splitUp = story.split("\n");
         let title = "";
-        for(let i = 0; i < splitUp.length; i++){
-          if(splitUp[i].indexOf("Title:") > -1)
-          {
-            let noSpaces = splitUp[i].split(" ")
+        for (let i = 0; i < splitUp.length; i++) {
+          if (splitUp[i].indexOf("Title:") > -1) {
+            let noSpaces = splitUp[i].split(" ");
             console.log(noSpaces);
             noSpaces = noSpaces.splice(1, noSpaces.length);
-            title = ""
-            for(let k = 0; k < noSpaces.length; k++)
-            {
-              title += noSpaces[k] + " "
+            title = "";
+            for (let k = 0; k < noSpaces.length; k++) {
+              title += noSpaces[k] + " ";
             }
             break;
           }
         }
-       console.log(title)
+        console.log(title);
         toast({
-          title: "Details submitted.",
-          description: "Your colleges will appear soon.",
+          title: "Story generated.",
+          description: "Your story will be shared shortly.",
           status: "success",
           duration: 5000,
           isClosable: true,
         });
-        
-       axios.post("https://hb-server.herokuapp.com/story/poststory", {
+        axios.post("https://hb-server.herokuapp.com/story/poststory", {
           title: title,
           story: story,
           views: 0,
-        })
-
+        });
         setButtonLoading(false);
       })
       .catch((err: any) => {
@@ -93,30 +96,32 @@ export const Form = () => {
         <Heading as={"h1"} textAlign={"center"} mb={4} fontFamily="Bakbak One">
           Ghost Story Generator
         </Heading>
-        <FormControl isRequired>
-          <FormLabel>Character Name</FormLabel>
-          <Input
-            placeholder="John Hickey"
-            onChange={handleNameChange}
-            disabled={buttonLoading}
-          />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Character's Favorite Activity</FormLabel>
-          <Input
-            placeholder="Hiking"
-            onChange={handleActivityChange}
-            disabled={buttonLoading}
-          />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Location</FormLabel>
-          <Input
-            placeholder="Providence"
-            onChange={handleLocationChange}
-            disabled={buttonLoading}
-          />
-        </FormControl>
+        <Container>
+          <FormControl isRequired>
+            <FormLabel>Character Name</FormLabel>
+            <Input
+              placeholder="John Hickey"
+              onChange={handleNameChange}
+              disabled={buttonLoading}
+            />
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel>Character's Favorite Activity</FormLabel>
+            <Input
+              placeholder="Hiking"
+              onChange={handleActivityChange}
+              disabled={buttonLoading}
+            />
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel>Location</FormLabel>
+            <Input
+              placeholder="Providence"
+              onChange={handleLocationChange}
+              disabled={buttonLoading}
+            />
+          </FormControl>
+        </Container>
         <Button
           colorScheme={"green"}
           type={"submit"}
