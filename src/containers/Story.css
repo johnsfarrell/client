@@ -1,3 +1,12 @@
 ::selection .story {
   background: transparent;
 }
+
+.Spline {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+.Spline.fade-out {
+  opacity: 0;
+}

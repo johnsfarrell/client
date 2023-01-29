@@ -4,7 +4,6 @@ import { Story } from "./containers/Story";
 import { LandingPage } from "./pages/LandingPage";
 import theme from "./theme";
 import "./theme/styles.css";
-
 export const App = () => {
   const [hashtag, setHashtag] = useState(window.location.hash);
   useEffect(() => {
@@ -18,6 +17,7 @@ export const App = () => {
       window.onhashchange = null;
     };
   }, []);
+
   return (
     <ChakraProvider theme={theme}>
       {(hashtag === "" || hashtag === "#") && <LandingPage />}

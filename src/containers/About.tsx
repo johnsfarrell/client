@@ -33,15 +33,15 @@ export const About = () => {
         Description
       </Heading>
       <Text>
-        "Ghost Story Generator" is a project for Hack at Brown 2023 that
-        utilizes the MERN stack (MongoDB, Express.js, React, and Node.js) to
-        generate spooky stories based on user input. Users can input details
-        such as a character, location, and title, and the application will use
+        "Ghost Story Generator" is a project for Hack@Brown 2023 that utilizes
+        the MERN stack (MongoDB, Express.js, React, and Node.js) to generate
+        spooky stories based on user input. Users can input details such as a
+        character, location, and an activity, and the application will use
         OpenAI's API to generate a unique ghost story incorporating those
         elements. The project also utilizes Chakra UI for a sleek and modern
-        user interface. With this project, users will be able to easily create
-        their own ghost stories and share them with friends, adding an extra
-        layer of fun to storytelling.
+        user interface, as well as Spline for 3D renders. With this project,
+        users will be able to easily create their own ghost stories and share
+        them with friends, adding an extra layer of fun to storytelling.
       </Text>
       <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"} pt={4}>
         Creators
