@@ -174,7 +174,7 @@ export const Story = () => {
           h={"140"}
         >
           <Box
-            fontSize={"lg"}
+            fontSize={{ sm: "xl", base: "md" }}
             className={
               typing && story.story[page]
                 ? "font-effect-fire-animation"
