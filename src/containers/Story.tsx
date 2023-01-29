@@ -103,7 +103,7 @@ export const Story = () => {
   };
 
   const scenes = [
-    "https://prod.spline.design/DV0LmECggYTiJScO/scene.splinecode",
+    "https://prod.spline.design/iqDdsKTYCDNl6rDA/scene.splinecode",
     "https://prod.spline.design/tM7mu0ihNJt4CgyD/scene.splinecode",
   ];
 
