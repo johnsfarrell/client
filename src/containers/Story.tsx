@@ -162,9 +162,12 @@ export const Story = () => {
         right={0}
         margin={"auto"}
         display={page >= story.story.length ? "none" : undefined}
-        mb={15}
+        mb={{ sm: 10, base: 20 }}
       >
-        <Flex justifyContent={"space-between"} h={"140"}>
+        <Flex
+          justifyContent={story.story[page] ? "space-between" : "center"}
+          h={"140"}
+        >
           <Box
             fontSize={"lg"}
             className={

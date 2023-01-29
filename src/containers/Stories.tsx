@@ -55,7 +55,7 @@ export const Stories = () => {
             {popularStories.map(({ title, date, views, id }: any) => {
               return (
                 <Tr
-                  onClick={() => handleRowClick("/#story/" + id)}
+                  onClick={() => handleRowClick("#story/" + id)}
                   key={id}
                   _hover={{ backgroundColor: "#f0f0f0f0", cursor: "pointer" }}
                 >
