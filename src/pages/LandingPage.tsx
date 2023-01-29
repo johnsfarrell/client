@@ -41,20 +41,37 @@ export const LandingPage = () => {
               }}
             />
             <Tabs isFitted variant="soft-rounded" shadow={"xl"}>
-              <TabList bgColor={"#ffffff"} roundedTop={"lg"} px={5} pt={5}>
+              <TabList
+                bgColor={"#ffffff"}
+                roundedTop={"lg"}
+                px={{ md: 5, base: 1 }}
+                pt={5}
+              >
                 <Tab>Generate Story</Tab>
                 <Tab>Popular Stories</Tab>
                 <Tab>About Project</Tab>
               </TabList>
 
               <TabPanels>
-                <TabPanel bgColor={"#ffffff"} roundedBottom={"lg"} p={10}>
+                <TabPanel
+                  bgColor={"#ffffff"}
+                  roundedBottom={"lg"}
+                  p={{ sm: 10, base: 4 }}
+                >
                   <Form />
                 </TabPanel>
-                <TabPanel bgColor={"#ffffff"} roundedBottom={"lg"} p={10}>
+                <TabPanel
+                  bgColor={"#ffffff"}
+                  roundedBottom={"lg"}
+                  p={{ sm: 10, base: 4 }}
+                >
                   <Stories />
                 </TabPanel>
-                <TabPanel bgColor={"#ffffff"} roundedBottom={"lg"} p={10}>
+                <TabPanel
+                  bgColor={"#ffffff"}
+                  roundedBottom={"lg"}
+                  p={{ sm: 10, base: 4 }}
+                >
                   <About />
                 </TabPanel>
               </TabPanels>

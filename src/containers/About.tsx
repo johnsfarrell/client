@@ -32,7 +32,7 @@ export const About = () => {
       <Heading fontFamily="Actor" size="xs" as="h2" color={"#666666"} pt={4}>
         Description
       </Heading>
-      <Text>
+      <Text fontSize={"sm"}>
         "Ghost Story Generator" is a project for Hack@Brown 2023 that utilizes
         the MERN stack (MongoDB, Express.js, React, and Node.js) to generate
         spooky stories based on user input. Users can input details such as a

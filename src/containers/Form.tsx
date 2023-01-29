@@ -377,7 +377,7 @@ export const Form = () => {
               defaultValue={name}
             />
           </FormControl>
-          <FormControl isRequired pt={5}>
+          <FormControl isRequired pt={{ sm: 5, base: 2 }}>
             <FormLabel>Character's Favorite Activity</FormLabel>
             <Input
               placeholder="Hiking"
@@ -386,7 +386,7 @@ export const Form = () => {
               defaultValue={activity}
             />
           </FormControl>
-          <FormControl isRequired pt={5}>
+          <FormControl isRequired pt={{ sm: 5, base: 2 }}>
             <FormLabel>Location</FormLabel>
             <Input
               placeholder="Providence, Rhode Island"
@@ -396,7 +396,11 @@ export const Form = () => {
             />
           </FormControl>
         </Container>
-        <Flex>
+        <Flex
+          flexDir={{ sm: "row", base: "column" }}
+          alignItems={"center"}
+          pt={5}
+        >
           <Button
             colorScheme={"green"}
             type={"submit"}
@@ -406,23 +410,25 @@ export const Form = () => {
           >
             Generate Your Story 👻
           </Button>
-          <Button
-            colorScheme={"teal"}
-            mr={1}
-            onClick={handleRandomize}
-            w={"min-content"}
-            isDisabled={buttonLoading}
-          >
-            🎲
-          </Button>
-          <Button
-            colorScheme={"orange"}
-            onClick={handleBrownRandomize}
-            w={"min-content"}
-            isDisabled={buttonLoading}
-          >
-            🐻🤎
-          </Button>
+          <Flex mt={{ sm: 0, base: 1 }}>
+            <Button
+              colorScheme={"teal"}
+              mr={1}
+              onClick={handleRandomize}
+              w={"min-content"}
+              isDisabled={buttonLoading}
+            >
+              🎲
+            </Button>
+            <Button
+              colorScheme={"orange"}
+              onClick={handleBrownRandomize}
+              w={"min-content"}
+              isDisabled={buttonLoading}
+            >
+              🐻🤎
+            </Button>
+          </Flex>
         </Flex>
         {buttonLoading && (
           <Text color={"#666666"}>
