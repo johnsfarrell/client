@@ -18,6 +18,7 @@ export const LandingPage = () => {
       w={"100vw"}
       minH={"100vh"}
       bgImage={process.env.PUBLIC_URL + "/pattern.svg"}
+      overflowY={"hidden"}
     >
       <Box
         bgGradient={

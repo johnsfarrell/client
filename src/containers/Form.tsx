@@ -9,6 +9,7 @@ import {
   Text,
   Flex,
   Container,
+  Alert,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -367,6 +368,13 @@ export const Form = () => {
         <Heading as={"h1"} textAlign={"center"} mb={4} fontFamily="Bakbak One">
           Ghost Story Generator 👻
         </Heading>
+        <Alert status="warning" variant="left-accent">
+          <Text fontSize="sm">
+            <b>2023 Update:</b> The story generator has been deprecated due to
+            API costs. You can still watch the 3D stories that were generated in
+            the past, but you can no longer generate new stories.
+          </Text>
+        </Alert>
         <Container>
           <FormControl isRequired>
             <FormLabel>Character Name</FormLabel>
@@ -375,6 +383,7 @@ export const Form = () => {
               onChange={handleNameChange}
               disabled={buttonLoading}
               defaultValue={name}
+              isReadOnly={true}
             />
           </FormControl>
           <FormControl isRequired pt={{ sm: 5, base: 2 }}>
@@ -384,6 +393,7 @@ export const Form = () => {
               onChange={handleActivityChange}
               disabled={buttonLoading}
               defaultValue={activity}
+              isReadOnly={true}
             />
           </FormControl>
           <FormControl isRequired pt={{ sm: 5, base: 2 }}>
@@ -393,6 +403,7 @@ export const Form = () => {
               onChange={handleLocationChange}
               disabled={buttonLoading}
               defaultValue={location}
+              isReadOnly={true}
             />
           </FormControl>
         </Container>
@@ -407,6 +418,7 @@ export const Form = () => {
             w={"min-content"}
             isLoading={buttonLoading}
             mr={1}
+            isDisabled={true}
           >
             Generate Your Story 👻
           </Button>
@@ -416,7 +428,7 @@ export const Form = () => {
               mr={1}
               onClick={handleRandomize}
               w={"min-content"}
-              isDisabled={buttonLoading}
+              isDisabled={true}
             >
               🎲
             </Button>
@@ -424,7 +436,7 @@ export const Form = () => {
               colorScheme={"orange"}
               onClick={handleBrownRandomize}
               w={"min-content"}
-              isDisabled={buttonLoading}
+              isDisabled={true}
             >
               🐻🤎
             </Button>
